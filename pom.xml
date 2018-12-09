@@ -13,7 +13,7 @@
 	</parent>
 	<groupId>com.beekay</groupId>
 	<artifactId>springpetclinic</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>springpetclinic</name>
 	<description>Demo project for Spring Boot</description>
@@ -42,7 +42,7 @@
 	</build>
 	<scm>
 		<developerConnection>scm:git:https://github.com/bkrishna9572/springpetclinic.git</developerConnection>
-	  <tag>springpetclinic-0.0.1</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 </project>
