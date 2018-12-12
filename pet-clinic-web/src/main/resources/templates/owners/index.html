@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body}, 'owners')}">
 <head>
     <meta charset="UTF-8">
     <title>Owners List Page</title>
 </head>
 <body>
 <!-- thymesVar id="owner" type="com.beekay.springpetclinic.model.Owner"*/-->
-<p th:text="'List of Owners'">Owners</p>
-<table>
-    <tr><th>ID</th><th>FirstName</th><th>LastName</th></tr>
+<t2 th:text="'List of Owners'">Owners List</t2>
+<table class="table table-striped">
+    <tr><th style="width: 150px">ID</th><th style="width: 150px">FirstName</th><th style="width: 150px">LastName</th></tr>
     <tr th:each="owner : ${owners}">
         <td th:text="${owner.id}">ID</td>
         <td th:text="${owner.firstName}">FirstName</td>
