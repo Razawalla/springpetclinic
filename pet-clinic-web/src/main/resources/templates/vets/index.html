@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body}, 'vets')}">
 <head>
     <meta charset="UTF-8">
     <title>Vet List Page</title>
 </head>
 <body>
-<h1>List of Vets</h1>
+<h2>List of Vets</h2>
 <!-- thymesVar id="vet" type="com.beekay.springpetclinic.model.Vet"*/-->
-<table>
-    <tr><th>ID</th><th>FirstName</th><th>LastName</th></tr>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+        </tr>
+    </thead>
     <tr th:each="vet : ${vets}">
         <td th:text="${vet.id}">ID</td>
         <td th:text="${vet.firstName}">FirstName</td>

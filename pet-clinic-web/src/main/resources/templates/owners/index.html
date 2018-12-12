@@ -6,9 +6,15 @@
 </head>
 <body>
 <!-- thymesVar id="owner" type="com.beekay.springpetclinic.model.Owner"*/-->
-<t2 th:text="'List of Owners'">Owners List</t2>
+<h2 th:text="'List of Owners'">Owners List</h2>
 <table class="table table-striped">
-    <tr><th style="width: 150px">ID</th><th style="width: 150px">FirstName</th><th style="width: 150px">LastName</th></tr>
+    <thead>
+    <tr>
+        <th style="width: 150px">ID</th>
+        <th style="width: 150px">FirstName</th>
+        <th style="width: 150px">LastName</th>
+    </tr>
+    </thead>
     <tr th:each="owner : ${owners}">
         <td th:text="${owner.id}">ID</td>
         <td th:text="${owner.firstName}">FirstName</td>
