@@ -1,4 +1,4 @@
-package com.beekay.springpetclinic.services.mapServices;
+package com.beekay.springpetclinic.service.mapServices;
 
 import com.beekay.springpetclinic.model.BaseEntity;
 

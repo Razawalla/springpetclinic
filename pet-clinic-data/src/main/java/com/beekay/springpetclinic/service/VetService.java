@@ -1,4 +1,4 @@
-package com.beekay.springpetclinic.services;
+package com.beekay.springpetclinic.service;
 
 import com.beekay.springpetclinic.model.Vet;
 

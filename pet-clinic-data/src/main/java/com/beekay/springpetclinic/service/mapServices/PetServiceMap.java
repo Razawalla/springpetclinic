@@ -1,7 +1,7 @@
-package com.beekay.springpetclinic.services.mapServices;
+package com.beekay.springpetclinic.service.mapServices;
 
 import com.beekay.springpetclinic.model.Pet;
-import com.beekay.springpetclinic.services.PetService;
+import com.beekay.springpetclinic.service.PetService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;

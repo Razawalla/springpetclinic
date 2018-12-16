@@ -1,9 +1,9 @@
-package com.beekay.springpetclinic.services.mapServices;
+package com.beekay.springpetclinic.service.mapServices;
 
 import com.beekay.springpetclinic.model.Speciality;
 import com.beekay.springpetclinic.model.Vet;
-import com.beekay.springpetclinic.services.SpecialityService;
-import com.beekay.springpetclinic.services.VetService;
+import com.beekay.springpetclinic.service.SpecialityService;
+import com.beekay.springpetclinic.service.VetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
