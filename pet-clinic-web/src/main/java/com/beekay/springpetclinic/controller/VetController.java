@@ -1,6 +1,6 @@
 package com.beekay.springpetclinic.controller;
 
-import com.beekay.springpetclinic.services.VetService;
+import com.beekay.springpetclinic.service.VetService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

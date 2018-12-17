@@ -1,10 +1,7 @@
 package com.beekay.springpetclinic.bootstrap;
 
 import com.beekay.springpetclinic.model.*;
-import com.beekay.springpetclinic.services.OwnerService;
-import com.beekay.springpetclinic.services.PetTypeService;
-import com.beekay.springpetclinic.services.SpecialityService;
-import com.beekay.springpetclinic.services.VetService;
+import com.beekay.springpetclinic.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -18,13 +15,15 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
+    private final VisitService visitService;
 
     @Autowired
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -69,18 +68,25 @@ public class DataLoader implements CommandLineRunner {
         Owner owner2 = new Owner();
         owner2.setFirstName("Aarthi");
         owner2.setLastName("Gandhi");
-        owner1.setAddress("ECIL");
-        owner1.setCity("Hyderabad");
-        owner1.setTelephone("4567");
+        owner2.setAddress("ECIL");
+        owner2.setCity("Hyderabad");
+        owner2.setTelephone("4567");
 
         Pet agPet = new Pet();
         agPet.setPetType(cat);
         agPet.setOwner(owner2);
         agPet.setBirthDate(LocalDate.now());
         agPet.setName("Bruno");
-        owner1.getPets().add(agPet);
+        owner2.getPets().add(agPet);
 
         ownerService.save(owner2);
+
+        Visit agVisit = new Visit();
+        agVisit.setPet(agPet);
+        agVisit.setDate(LocalDate.now());
+        agVisit.setDescription("Sneezy Kitty");
+
+        visitService.save(agVisit);
 
         Vet vet1 = new Vet();
         vet1.setFirstName("NewFirst");
