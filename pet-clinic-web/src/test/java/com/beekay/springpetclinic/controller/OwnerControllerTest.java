@@ -16,6 +16,7 @@ import java.util.Set;
 
 import static org.hamcrest.Matchers.*;
 import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -67,10 +68,32 @@ class OwnerControllerTest {
     void findOwners() throws Exception {
         mockMvc.perform(get("/owners/find"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("notimplemented"));
+                .andExpect(view().name("owners/findform"));
 
         verifyZeroInteractions(ownerService);
     }
+
+    @Test
+    void findOwnerResultMultiple() throws Exception {
+        when(ownerService.findAllByLastNameLike(anyString())).thenReturn(owners);
+
+        mockMvc.perform(get("/owners/ownerSearch"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("owners/ownerList"))
+                .andExpect(model().attribute("owners", hasSize(2)));
+    }
+
+    @Test
+    void findOwnerResultSingle() throws Exception {
+        Set<Owner> owners = new HashSet<>();
+        owners.add(Owner.builder().id(1L).build());
+        when(ownerService.findAllByLastNameLike(anyString())).thenReturn(owners);
+
+        mockMvc.perform(get("/owners/ownerSearch"))
+                .andExpect(status().is3xxRedirection());
+    }
+
+
 
     @Test
     void ownerById() throws Exception{
@@ -83,4 +106,5 @@ class OwnerControllerTest {
                 .andExpect(view().name("owners/ownerDetails"))
                 .andExpect(model().attribute("owner", hasProperty("id", is(1L))));
     }
+
 }

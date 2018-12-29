@@ -69,4 +69,13 @@ class OwnerServiceMapTest {
         assertNotNull(owner);
         assertEquals(lastName, owner.getLastName());
     }
+
+    @Test
+    void findAllByLastName() {
+
+        Set<Owner> returned = ownerServiceMap.findAllByLastNameLike(lastName);
+
+        assertEquals(1,returned.size());
+
+    }
 }

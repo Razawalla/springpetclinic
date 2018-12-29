@@ -112,4 +112,17 @@ class OwnerServiceJPATest {
         ownerServiceJPA.deleteById(1L);
         verify(ownerRepository).deleteById(anyLong());
     }
+
+    @Test
+    void findAllByLastName() {
+        Set<Owner> owners = new HashSet<>();
+        owners.add(savedOwner);
+
+        when(ownerRepository.findAllByLastNameLike(anyString())).thenReturn(owners);
+
+        Set<Owner> returned = ownerServiceJPA.findAllByLastNameLike("dummy");
+
+        assertEquals(1,returned.size());
+        verify(ownerRepository,timeout(1)).findAllByLastNameLike(anyString());
+    }
 }
