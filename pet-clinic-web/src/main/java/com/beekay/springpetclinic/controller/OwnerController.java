@@ -50,7 +50,7 @@ public class OwnerController {
             owner.setLastName("");
         }
 
-        Set<Owner> owners = ownerService.findAllByLastNameLike(owner.getLastName());
+        Set<Owner> owners = ownerService.findAllByLastNameLike("%" + owner.getLastName() + "%");
 
         if(owners.isEmpty()){
             result.rejectValue("lastName", "not found", "notfound");
@@ -59,7 +59,7 @@ public class OwnerController {
             return "redirect:/owners/"+owners.stream().findFirst().get().getId();
         }else {
             model.addAttribute("owners", owners);
-            return "owners/ownerList";
+            return "owners/index";
         }
     }
 
